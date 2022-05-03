@@ -1,0 +1,28 @@
+.header__container {
+  display: 'flex';
+}
+
+.header__toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__searchIcon {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__iconGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+}
+/*# sourceMappingURL=styles.css.map */

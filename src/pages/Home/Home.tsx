@@ -2,8 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { Product, AppState } from '../types'
-import { addProduct, removeProduct } from '../redux/actions'
+import { Product, AppState } from '../../types'
+import { addProduct, removeProduct } from '../../redux/actions'
 
 const names = ['Apple', 'Orange', 'Avocado', 'Banana', 'Cucumber', 'Carrot']
 
@@ -23,9 +23,9 @@ export default function Home() {
   return (
     <>
       <h1>Home page</h1>
-      {products.length <= 0 && <div>No products in cart</div>}
+      {products.length <= 0 && <div>No products cart</div>}
       <ul>
-        {products.map(p => (
+        {products.map((p) => (
           <li key={p.id}>
             <Link to={`/products/${p.id}`}>{`${p.name} - $${p.price}`}</Link>
             <button onClick={() => dispatch(removeProduct(p))}>Remove</button>
