@@ -13,9 +13,21 @@ const initState: AppState = {
   ui: {
     dialogOpen: {},
   },
-  country: {
+  cart: {
     isOpen: false,
     nation: [],
+  },
+  nation: {
+    loading: true,
+    data: [],
+    error: '',
+    order: true,
+    isError: false,
+  },
+  countryAttribute: {
+    loading: true,
+    data: [],
+    error: '',
   },
 }
 

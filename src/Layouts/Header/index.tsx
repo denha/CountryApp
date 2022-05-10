@@ -5,6 +5,7 @@ import Cart from '../../components/Cart'
 import Switcher from '../../components/Switch'
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@material-ui/core'
 import { PublicOutlined } from '@material-ui/icons'
+//import { ThemeContext } from '../../components/context/ThemeContext'
 
 const Header = () => {
   return (

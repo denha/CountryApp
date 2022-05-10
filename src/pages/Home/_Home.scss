@@ -1,0 +1,11 @@
+.home{
+    //height:100vh;
+    &__logo{
+        display:flex;
+        justify-content: center;
+    }
+
+    &__dataTable{
+        padding: 2rem 4rem;
+    }
+}

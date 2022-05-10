@@ -1,38 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 
-import { Product, AppState } from '../../types'
-import { addProduct, removeProduct } from '../../redux/actions'
+import Header from '../../Layouts/Header'
+import DataTable from '../../components/Table'
+import { AppState } from '../../types'
+import { fetchNations } from '../../redux/actions/nation'
+import { CircularProgress, Paper } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
+import { AlertTitle } from '@material-ui/lab'
 
-const names = ['Apple', 'Orange', 'Avocado', 'Banana', 'Cucumber', 'Carrot']
-
-export default function Home() {
+const Home = () => {
+  const { loading, data, isError, error } = useSelector(
+    (state: AppState) => state.nation
+  )
   const dispatch = useDispatch()
-  const products = useSelector((state: AppState) => state.product.inCart)
 
-  const handleAddProduct = () => {
-    const product: Product = {
-      id: (+new Date()).toString(),
-      name: names[Math.floor(Math.random() * names.length)],
-      price: +(Math.random() * 10).toFixed(2),
-    }
-    dispatch(addProduct(product))
-  }
+  useEffect(() => {
+    dispatch(fetchNations())
+  }, [dispatch])
 
   return (
-    <>
-      <h1>Home page</h1>
-      {products.length <= 0 && <div>No products cart</div>}
-      <ul>
-        {products.map((p) => (
-          <li key={p.id}>
-            <Link to={`/products/${p.id}`}>{`${p.name} - $${p.price}`}</Link>
-            <button onClick={() => dispatch(removeProduct(p))}>Remove</button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleAddProduct}>Add product</button>
-    </>
+    <Paper elevation={0} component="main" className="home">
+      <Header></Header>
+      <div className="home__dataTable">
+        {loading && (
+          <div className="home__logo">
+            <CircularProgress></CircularProgress>
+          </div>
+        )}
+
+        {isError && (
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            Error — <strong>{error}!</strong>
+          </Alert>
+        )}
+        <DataTable data={data}></DataTable>
+      </div>
+    </Paper>
   )
 }
+
+export default Home

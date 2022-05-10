@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-//import App from './App'
+import App from './App'
 import * as serviceWorker from './serviceWorker'
 import makeStore from './redux/store'
-import Header from './Layouts/Header'
 import './index.css'
 import './styles.css'
 
@@ -15,8 +14,7 @@ const store = makeStore()
 const WithProvider = () => (
   <Provider store={store}>
     <Router>
-      <Header />
-      {/*<App/>*/}
+      <App />
     </Router>
   </Provider>
 )
